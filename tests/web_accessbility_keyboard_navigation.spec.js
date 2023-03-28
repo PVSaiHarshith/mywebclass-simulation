@@ -15,18 +15,18 @@ test.describe('Keyboard Navigation Test', () => {
     await page.waitForSelector('a');
     const firstLink = await page.$('a');
     const linkText = await firstLink.innerText();
-    expect(linkText).toBe('Example Domain');
+    expect(linkText).toBe('MyWebClass.org');
 
     // Click on the first link using Enter key
     await page.keyboard.press('Enter');
     const newPage = await context.waitForEvent('page');
     const pageTitle = await newPage.title();
-    expect(pageTitle).toContain('Example Domain');
+    expect(pageTitle).toContain('MyWebClass.org');
 
     // Navigate back to the previous page using the Backspace key
     await newPage.keyboard.press('Backspace');
     await page.waitForNavigation();
     const pageTitleAfterBack = await page.title();
-    expect(pageTitleAfterBack).toBe('Example Domain');
+    expect(pageTitleAfterBack).toBe('MyWebClass.org');
   });
 });
